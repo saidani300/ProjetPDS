@@ -10,8 +10,8 @@ using SaleMicroService.DBContexts;
 namespace SaleMicroService.Migrations
 {
     [DbContext(typeof(SaleContext))]
-    [Migration("20201225134128_1")]
-    partial class _1
+    [Migration("20201228111828_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,9 +79,11 @@ namespace SaleMicroService.Migrations
 
             modelBuilder.Entity("SaleMicroService.Models.SaleDetail", b =>
                 {
-                    b.HasOne("SaleMicroService.Models.Sale", null)
+                    b.HasOne("SaleMicroService.Models.Sale", "Sale")
                         .WithMany("SaleDetails")
                         .HasForeignKey("SaleId");
+
+                    b.Navigation("Sale");
                 });
 
             modelBuilder.Entity("SaleMicroService.Models.Sale", b =>

@@ -77,9 +77,11 @@ namespace SaleMicroService.Migrations
 
             modelBuilder.Entity("SaleMicroService.Models.SaleDetail", b =>
                 {
-                    b.HasOne("SaleMicroService.Models.Sale", null)
+                    b.HasOne("SaleMicroService.Models.Sale", "Sale")
                         .WithMany("SaleDetails")
                         .HasForeignKey("SaleId");
+
+                    b.Navigation("Sale");
                 });
 
             modelBuilder.Entity("SaleMicroService.Models.Sale", b =>
