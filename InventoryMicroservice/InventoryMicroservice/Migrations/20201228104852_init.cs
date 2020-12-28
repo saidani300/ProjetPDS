@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InventoryMicroservice.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Inventorys",
+                name: "Inventories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -20,14 +20,14 @@ namespace InventoryMicroservice.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Inventorys", x => x.Id);
+                    table.PrimaryKey("PK_Inventories", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Inventorys");
+                name: "Inventories");
         }
     }
 }
