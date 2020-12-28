@@ -42,7 +42,7 @@ namespace ProductMicroService.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 #pragma warning restore 612, 618
         }

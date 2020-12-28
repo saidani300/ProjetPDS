@@ -9,8 +9,8 @@ using ProductMicroService.DBContexts;
 namespace ProductMicroService.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20201213171942_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201228110443_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,7 +44,7 @@ namespace ProductMicroService.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 #pragma warning restore 612, 618
         }

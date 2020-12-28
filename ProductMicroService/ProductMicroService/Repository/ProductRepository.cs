@@ -18,12 +18,12 @@ namespace ProductMicroService.Repository
 
         public IEnumerable<Product> GetProducts()
         {
-            return _dbContext.Product.ToList();
+            return _dbContext.Products.ToList();
         }
 
         public Product GetProductByID(int productId)
         {
-            return _dbContext.Product.Find(productId);
+            return _dbContext.Products.Find(productId);
         }
 
         public void InsertProduct(Product product)

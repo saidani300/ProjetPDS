@@ -12,6 +12,6 @@ namespace ProductMicroService.DBContexts
         public ProductContext(DbContextOptions<ProductContext> options) : base(options)
         {
         }
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
