@@ -35,15 +35,13 @@ namespace AccountMicroService.Controllers
             _logger = logger;
         }
 
-            //[HttpGet]
-            //public UserModel GetById()
-            //{
-            //string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);//RequestContext.Principal.Identity.GetUserId();
+            [HttpGet]
+            public string GetId()
+            {
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-
-            //    return _userData.GetUserById(userId).First();
-
-            //}
+               return userId;
+            }
 
            [Authorize(Roles = "Admin")]
             [HttpGet]
