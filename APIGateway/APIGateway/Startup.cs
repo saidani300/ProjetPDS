@@ -34,7 +34,7 @@ namespace APIGateway
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    await context.Response.WriteAsync("API Gateway");
                 });
             });
             app.UseOcelot().Wait();
