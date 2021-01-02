@@ -65,21 +65,36 @@ namespace DemoProjectDesktopUI.Library.Api
         {
             _ApiClient.DefaultRequestHeaders.Clear();
         }
-
-        public async Task GetLoggedInUserInfo(string token)
+        public async Task<IDModel> LoggedInUserId(string token)
         {
             _ApiClient.DefaultRequestHeaders.Clear();
             _ApiClient.DefaultRequestHeaders.Accept.Clear();
             _ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _ApiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer { token }");
-            using (HttpResponseMessage response = await _ApiClient.GetAsync("/api/User"))
+            using (HttpResponseMessage response = await _ApiClient.GetAsync("/User"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<IDModel>();
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+        public async Task GetLoggedInUserInfo(string userId, string token)
+        {
+            _ApiClient.DefaultRequestHeaders.Clear();
+            _ApiClient.DefaultRequestHeaders.Accept.Clear();
+            _ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            using (HttpResponseMessage response = await _ApiClient.GetAsync("/User/" + userId))
             {
                 if (response.IsSuccessStatusCode)
                 {
                     var result = await response.Content.ReadAsAsync<LoggedInUserModel>();
                     _loggedInUser.CreatedDate = result.CreatedDate;
                     _loggedInUser.EmailAddress = result.EmailAddress;
-                    _loggedInUser.FirstName = result.FirstName;
                     _loggedInUser.FirstName = result.FirstName;
                     _loggedInUser.Id = result.Id;
                     _loggedInUser.LastName = result.LastName;
@@ -90,6 +105,6 @@ namespace DemoProjectDesktopUI.Library.Api
                     throw new Exception(response.ReasonPhrase);
                 }
             }
-            }
-     }
+        }
+    }
 }

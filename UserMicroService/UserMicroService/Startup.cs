@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Steeltoe.Discovery.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace UserMicroService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDiscoveryClient(Configuration);
             services.AddTransient<IUserRepository, UserRepository>();
 
             services.AddDbContext<UserContext>(o => o.UseSqlServer(Configuration.GetConnectionString("UserDB")));
@@ -53,6 +55,7 @@ namespace UserMicroService
             {
                 endpoints.MapControllers();
             });
+            app.UseDiscoveryClient();
         }
     }
 }

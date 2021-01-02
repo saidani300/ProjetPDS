@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ProductMicroservice.Repository;
+using Steeltoe.Discovery.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace InventoryMicroservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDiscoveryClient(Configuration);
             services.AddControllers();
             services.AddDbContext<InventoryContext>(o => o.UseSqlServer(Configuration.GetConnectionString("InventoryDB")));
             services.AddTransient<IInventoryRepository, InventoryRepository>();
@@ -52,6 +54,7 @@ namespace InventoryMicroservice
             {
                 endpoints.MapControllers();
             });
+            app.UseDiscoveryClient();
         }
     }
 }

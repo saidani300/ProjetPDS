@@ -19,7 +19,7 @@ namespace DemoProjectDesktopUI.Library.Api
         }
         public async Task<List<ProductModel>> GetAll()
         {
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/Product"))
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/Product"))
             {
                 if (response.IsSuccessStatusCode)
                 {

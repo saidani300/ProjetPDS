@@ -14,7 +14,7 @@ namespace DemoProjectDesktopUI.ViewModels
 {
     public class LoginViewModel : Screen
     {
-        private string _userName = "admin@demoproject.com";
+        private string _userName = "wael.saidani@sesame.com.tn";
         private string _password = "Password123@";
         private IAPIHelper _apiHelper;
         private IEventAggregator _events;
@@ -84,8 +84,9 @@ namespace DemoProjectDesktopUI.ViewModels
                 ErrorMessage = "";
                 var result = await _apiHelper.AuthenticateAsync(UserName, Password);
 
+                var userId = await _apiHelper.LoggedInUserId(result.Access_token);
 
-                await _apiHelper.GetLoggedInUserInfo(result.Access_token);
+                await _apiHelper.GetLoggedInUserInfo(userId.userId , result.Access_token);
 
                 await _events.PublishOnUIThreadAsync(new LogOnEvent() , new CancellationToken());
             }

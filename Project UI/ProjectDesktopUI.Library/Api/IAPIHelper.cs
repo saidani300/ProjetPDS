@@ -6,9 +6,11 @@ namespace DemoProjectDesktopUI.Library.Api
 {
     public interface IAPIHelper
     {
-        Task<AuthenticatedUser> AuthenticateAsync(string username, string password);
-        Task GetLoggedInUserInfo(string token);
         HttpClient ApiClient { get; }
+
+        Task<AuthenticatedUser> AuthenticateAsync(string username, string password);
+        Task GetLoggedInUserInfo(string userId, string token);
+        Task<IDModel> LoggedInUserId(string token);
         void LogOffUser();
     }
 }

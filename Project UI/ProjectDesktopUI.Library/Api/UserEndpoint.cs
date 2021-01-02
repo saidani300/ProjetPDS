@@ -19,7 +19,7 @@ namespace DemoProjectDesktopUI.Library.Api
 
         public async Task<List<UserModel>> GetAll()
         {
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/User/Admin/GetAllUsers"))
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/Admin/GetAllUsers"))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -37,7 +37,7 @@ namespace DemoProjectDesktopUI.Library.Api
 
         public async Task<Dictionary<string, string>> GetAllRoles()
         {
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/User/Admin/GetAllRoles"))
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/Admin/GetAllRoles"))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -56,7 +56,7 @@ namespace DemoProjectDesktopUI.Library.Api
         public async Task AddUserToRole(string userId , string roleName)
         {
             var data = new { userId, roleName };
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("/api/User/Admin/AddRole" , data))
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("/Admin/AddRole" , data))
             {
                 if (response.IsSuccessStatusCode == false)
                 {
@@ -72,7 +72,7 @@ namespace DemoProjectDesktopUI.Library.Api
         public async Task RemoveUserFromRole(string userId, string roleName)
         {
             var data = new { userId, roleName };
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("/api/User/Admin/RemoveRole", data))
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("/Admin/RemoveRole", data))
             {
                 if (response.IsSuccessStatusCode == false)
                 {

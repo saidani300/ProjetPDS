@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SaleMicroService.DBContexts;
 using SaleMicroService.Repository;
+using Steeltoe.Discovery.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace SaleMicroService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDiscoveryClient(Configuration);
             services.AddControllers();
             services.AddTransient<ISaleRepository, SaleRepository>();
             services.AddDbContext<SaleContext>(o => o.UseSqlServer(Configuration.GetConnectionString("SaleDB")));
@@ -64,6 +66,7 @@ namespace SaleMicroService
             });
             app.UseSwagger();
             app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "Demo Project API v1"); });
+            app.UseDiscoveryClient();
         }
     }
 }
