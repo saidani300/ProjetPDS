@@ -6,7 +6,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["ProductMicroService/ProductMicroService.csproj", "ProductMicroService/"]
+COPY ["ProductMicroService/ProductMicroService/ProductMicroService.csproj", "ProductMicroService/"]
 RUN dotnet restore "ProductMicroService/ProductMicroService.csproj"
 COPY . .
 WORKDIR "/src/ProductMicroService"

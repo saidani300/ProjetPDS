@@ -6,3 +6,5 @@ services:
     build:
       context: .
       dockerfile: ProductMicroService/Dockerfile
+    ports:     
+      - "9002:80"

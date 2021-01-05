@@ -3,9 +3,9 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>c19268f3-59e9-43e0-bd8c-0e618fee3513</ProjectGuid>
+    <ProjectGuid>bacbde49-1d4f-4d4e-9e5e-563e978c0f8a</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/weatherforecast</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>productmicroservice</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
