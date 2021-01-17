@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    triggers{
-    pollSCM('*****')
-    }
     environment {
         dockerRegistry = "acrmicroserviceproject.azurecr.io"
         dockerRegistryUrl = "https://$dockerRegistry"
