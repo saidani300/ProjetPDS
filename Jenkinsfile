@@ -10,9 +10,6 @@ pipeline {
         authDockerImage = "$dockerRegistry/$authImageName:$authImageBuildVersion"
     }
     stages {
-          when{
-    branch 'main'
-  }
         stage ('Checkout') {
             steps {
                 git credentialsId: 'GitHubCredentials', url: 'https://github.com/saidani300/ProductMicroService.git',branch: 'main'
