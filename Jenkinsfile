@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                git credentialsId: 'GitHubCredentials', url: 'https://github.com/saidani300/ProductMicroService.git',branch: 'main'
+                git credentialsId: 'GitHubCredentials', url: 'https://github.com/saidani300/ProjetPDS.git',branch: 'main'
             }
         }
         stage('Build and Test Image') {
