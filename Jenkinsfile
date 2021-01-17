@@ -10,7 +10,6 @@ pipeline {
         authDockerImage = "$dockerRegistry/$authImageName:$authImageBuildVersion"
     }
     stages ('ProductMicroService') {
-        if (env.GIT_COMMIT != env.GIT_PREVIOUS_SUCCESSFUL_COMMIT) {
         
         stage ('Checkout') {
             steps {
@@ -33,6 +32,6 @@ pipeline {
                 }
             }
         } 
-        }  
+          
     }
 }
