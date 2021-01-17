@@ -9,10 +9,12 @@ pipeline {
         authImageBuildVersion = '1.0.0'
         authDockerImage = "$dockerRegistry/$authImageName:$authImageBuildVersion"
     }
-    stages {
+    stages ('ProductMicroService') {
+        if (env.GIT_COMMIT != env.GIT_PREVIOUS_SUCCESSFUL_COMMIT) {
+        
         stage ('Checkout') {
             steps {
-                git credentialsId: 'GitHubCredentials', url: 'https://github.com/saidani300/ProjetPDS.git',branch: 'main'
+                git credentialsId: 'GitHubCredentials', url: 'https://github.com/saidani300/ProductMicroService.git',branch: 'main'
             }
         }
         stage('Build and Test Image') {
@@ -30,6 +32,7 @@ pipeline {
                     }
                 }
             }
-        }   
+        } 
+        }  
     }
 }
