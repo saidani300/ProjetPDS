@@ -8,11 +8,27 @@ pipeline {
         dockerRegistryUrl = "https://$dockerRegistry"
         dockerRegistryCredentials = 'ACRCredentials'
         
-        authImageName = "usermicroservice"
-        authImageBuildVersion = '1.0.0'
-        authDockerImage = "$dockerRegistry/$authImageName:$authImageBuildVersion"
+        authImageNameUser = "usermicroservice"
+        authImageBuildVersionUser = '1.0.0'
+        authDockerImageUser = "$dockerRegistry/$authImageNameUser:$authImageBuildVersionUser"
+        
+        authImageNameProduct = "productmicroservice"
+        authImageBuildVersionProduct = '1.0.0'
+        authDockerImageProduct = "$dockerRegistry/$authImageNameProduct:$authImageBuildVersionProduct"
+
+        authImageNameAccount = "accountmicroservice"
+        authImageBuildVersionAccount = '1.0.0'
+        authDockerImageAccount = "$dockerRegistry/$authImageNameAccount:$authImageBuildVersionAccount"
+
+        authImageNameInventory = "inventorymicroservice"
+        authImageBuildVersionInventory = '1.0.0'
+        authDockerImageInventory= "$dockerRegistry/$authImageNameInventory:$authImageBuildVersionInventory"
+
+        authImageNameSale = "salemicroservice"
+        authImageBuildVersionSale = '1.0.0'
+        authDockerImageSale= "$dockerRegistry/$authImageNameSale:$authImageBuildVersionSale"
     }
-    stages ('UserMicroService') {
+    stages{
         
         stage ('Checkout') {
             steps {
@@ -22,7 +38,7 @@ pipeline {
         stage('Build and Test Image') {
             steps { 
                 script {
-                    sh "docker image build -f UserMicroService/Dockerfile -t $env.authDockerImage ." 
+                    sh "docker image build -f UserMicroService/Dockerfile -t $env.authDockerImageUser ." 
                 }
             }  
         }
@@ -30,7 +46,7 @@ pipeline {
             steps{
                 script {
                     docker.withRegistry(env.dockerRegistryUrl, env.dockerRegistryCredentials){
-                        sh "docker image push $env.authDockerImage"
+                        sh "docker image push $env.authDockerImageUser"
                     }
                 }
             }
