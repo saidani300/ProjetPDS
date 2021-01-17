@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    when{
+    branch 'main'
+  }
     environment {
         dockerRegistry = "acrmicroserviceproject.azurecr.io"
         dockerRegistryUrl = "https://$dockerRegistry"
