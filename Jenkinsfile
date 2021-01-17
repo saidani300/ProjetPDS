@@ -8,7 +8,7 @@ pipeline {
         dockerRegistryUrl = "https://$dockerRegistry"
         dockerRegistryCredentials = 'ACRCredentials'
         
-        authImageName = "productmicroservice"
+        authImageName = "usermicroservice"
         authImageBuildVersion = '1.0.0'
         authDockerImage = "$dockerRegistry/$authImageName:$authImageBuildVersion"
     }
@@ -16,13 +16,13 @@ pipeline {
         
         stage ('Checkout') {
             steps {
-                git credentialsId: 'GitHubCredentials', url: 'https://github.com/saidani300/ProductMicroService.git',branch: 'main'
+                git credentialsId: 'GitHubCredentials', url: 'https://github.com/saidani300/ProjetPDS.git',branch: 'main'
             }
         }
         stage('Build and Test Image') {
             steps { 
                 script {
-                    sh "docker image build -f ProductMicroService/Dockerfile -t $env.authDockerImage ." 
+                    sh "docker image build -f UserMicroService/Dockerfile -t $env.authDockerImage ." 
                 }
             }  
         }
