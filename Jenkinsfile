@@ -27,6 +27,10 @@ pipeline {
         authImageNameSale = "salemicroservice"
         authImageBuildVersionSale = '1.0.0'
         authDockerImageSale= "$dockerRegistry/$authImageNameSale:$authImageBuildVersionSale"
+        
+        authImageNameAPIgateway = "apigateway"
+        authImageBuildVersionAPIgateway = '1.0.0'
+        authDockerImageAPIgateway= "$dockerRegistry/$authImageNameAPIgateway:$authImageBuildVersionAPIgateway"
     }
     stages{
         
