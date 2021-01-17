@@ -12,7 +12,7 @@ pipeline {
         authImageBuildVersion = '1.0.0'
         authDockerImage = "$dockerRegistry/$authImageName:$authImageBuildVersion"
     }
-    stages ('ProductMicroService') {
+    stages ('UserMicroService') {
         
         stage ('Checkout') {
             steps {
